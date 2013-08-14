@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function post() {
+		form = document.getElementById("form"); //找到form
+		form.setAttribute("method", "POST");
+		legend = document.getElementById("legend");
+		legend.innerHTML = "现在用的是POST方法请求，所以所有内容都<em><strong>不会</strong></em>在URL里"
+	}
+	function get() {
+		form = document.getElementById("form"); //找到form
+		form.setAttribute("method", "GET");
+		legend = document.getElementById("legend");
+		legend.innerHTML = "现在用的是GET方法请求，所以所有内容都<em><strong>会</strong></em>在URL里"
+	}
+</script>
+
+</head>
+<body onload="get()">
+	<fieldset>
+		<legend>选择提交数据的方法</legend>
+		<input name="METHOD" type="radio" checked onclick="get()" />
+		GET
+		<input name="METHOD" type="radio" onclick="post()" />
+		POST
+	</fieldset>
+	<hr>
+	<form id="form" method="GET" action="FormProcessServlet">
+		<fieldset>
+			<legend id="legend"></legend>
+
+			<table>
+				<tr>
+					<td>1. 单行文本框</td>
+					<td>
+						<input name="1.1" type="text" placeholder="Type something…" value="1.1 单行文本框" />
+						<input name="1.2" type="password" placeholder="Type something…" value="1.2 单行密码框" />
+					</td>
+				</tr>
+				<tr>
+					<td>2. 多选按钮</td>
+					<td>
+						<input name="2.1" type="checkbox" value="2 多选按钮[选择1]" checked />
+						选择1
+						<input name="2.2" type="checkbox" value="2 多选按钮[选择2]" checked />
+						选择2
+					</td>
+				</tr>
+				<tr>
+					<td>3. 多行文本框</td>
+					<td>
+						<textarea name="3" rows="3">3 多行文本框</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>4. 单选按钮</td>
+					<td>
+						<input name="4.1" type="radio" value="4 单选按钮[选择1]" checked />
+						选择1
+						<input name="4.1" type="radio" value="4 单选按钮[选择2]">
+						选择2
+						<input name="4.1" type="radio" value="4 单选按钮[选择3]">
+						选择3
+					</td>
+				</tr>
+				<tr>
+					<td>5. 单选下拉列表</td>
+					<td>
+						<select name="5">
+							<option value="5 单选下拉列表[1]">选项1</option>
+							<option value="5 单选下拉列表[2]">选项2</option>
+							<option value="5 单选下拉列表[3]">选项3</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>6. 多选下拉列表</td>
+					<td>
+						<select name="selectMultiple" multiple="multiple">
+							<option value="6 多选下拉列表[1]">选项1</option>
+							<option value="6 多选下拉列表[2]">选项2</option>
+							<option value="6 多选下拉列表[3]">选项3</option>
+						</select>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2">
+						<button type="submit" class="btn">提交参数</button>
+					</td>
+				</tr>
+			</table>
+
+		</fieldset>
+
+	</form>
+
+</body>
+</html>
